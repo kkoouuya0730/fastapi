@@ -1,9 +1,12 @@
+from uuid import UUID
+
 from fastapi import HTTPException, status
+from sqlalchemy.orm.session import Session
+
+from auth.hash import Hash
+
 from ..models.user import User as UserModel
 from ..schemas.user import User, UserCreate
-from sqlalchemy.orm.session import Session
-from auth.hash import Hash
-from uuid import UUID
 
 
 def create_user(db: Session, request: UserCreate) -> User:

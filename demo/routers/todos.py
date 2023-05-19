@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 
 import demo.cruds.todo as todo_crud
 import demo.schemas.todo as todo_schema
+import demo.schemas.user as user_schema
 from auth.oauth import get_current_user
 
 from ..database import get_db
