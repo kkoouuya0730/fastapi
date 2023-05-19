@@ -1,10 +1,11 @@
 from typing import List
 from uuid import UUID
 
-from demo.cruds.user import create_user
 from fastapi import APIRouter, Depends, HTTPException
-from demo.schemas.user import User, UserCreate
 from sqlalchemy.orm import Session
+
+from demo.cruds.user import create_user
+from demo.schemas.user import User, UserCreate
 
 from ..database import get_db
 

@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from demo.routers import todos, user, authentication
+from demo.routers import authentication, todos, user
 
 app = FastAPI()
 

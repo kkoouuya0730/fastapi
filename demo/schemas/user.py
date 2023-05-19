@@ -1,7 +1,9 @@
 from typing import Optional
-from pydantic import BaseModel, EmailStr, Field, constr, validator
-from .common import DateTimeModelMixin, IdModelMixin
 from uuid import UUID
+
+from pydantic import BaseModel, EmailStr, Field, constr, validator
+
+from .common import DateTimeModelMixin, IdModelMixin
 
 
 class UserCreate(BaseModel):
