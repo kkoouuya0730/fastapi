@@ -1,12 +1,13 @@
-from fastapi import APIRouter, Depends, HTTPException
 from uuid import UUID
-import demo.schemas.todo as todo_schema
-import demo.cruds.todo as todo_crud
-import demo.cruds.done as done_crud
 
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from ..database import get_db
 
+import demo.cruds.done as done_crud
+import demo.cruds.todo as todo_crud
+import demo.schemas.todo as todo_schema
+
+from ..database import get_db
 
 router = APIRouter(
     prefix="/done",

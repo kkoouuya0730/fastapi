@@ -1,0 +1,28 @@
+version: 1
+formatters:
+    default:
+        format : '[%(asctime)s] [%(funcName)s] [%(process)d] [%(levelname)s] %(message)s !!'
+handlers:
+    file:
+        class : logging.FileHandler
+        level : DEBUG
+        formatter : default
+        filename : '/home/kkoouuya/python/fastapi/demo/log/application.log'
+        encoding : 'utf-8'
+        #ログの上限容量、これを超えるとローテーション
+        # maxBytes: 100000
+        #ログを残す数量
+        # bckupCount: 20
+    console:
+        class: logging.StreamHandler
+        level: DEBUG
+        formatter: default
+        stream: ext://sys.stdout
+loggers:
+  ApplicationLogger:
+    level: DEBUG
+    handlers: [file]
+    propagate: no
+root:
+    level: DEBUG
+    handlers: [ file ]

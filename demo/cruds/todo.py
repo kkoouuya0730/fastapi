@@ -1,8 +1,11 @@
 from datetime import datetime, timedelta, timezone
+from logging import getLogger
 from typing import List
 from uuid import UUID
 
 from sqlalchemy.orm import Session
+
+from log.log import ApiName, start_and_end_logging
 
 from ..models.todo import Todo as TodoModel
 from ..schemas.todo import Todo, TodoCreate
@@ -26,7 +29,8 @@ def get_todo(db: Session, id: UUID) -> Todo:
     return todo
 
 
-def create_todo(db: Session, todo: TodoCreate) -> Todo:
+@start_and_end_logging(ApiName.TODO)
+def create_todo(address_base, request_id, db: Session, todo: TodoCreate) -> Todo:
     try:
         new_todo = TodoModel(**todo.dict())
         db.add(new_todo)

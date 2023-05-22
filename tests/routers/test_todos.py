@@ -1,7 +1,9 @@
-from demo import __version__
-from demo.main import app
 from fastapi.testclient import TestClient
+
+from demo import __version__
 from demo.database import get_db
+from demo.main import app
+
 
 def temp_db(f):
     def func(SessionLocal, *args, **kwargs):
@@ -15,7 +17,9 @@ def temp_db(f):
         app.dependency_overrides[get_db] = override_get_db
         f(*args, **kwargs)
         app.dependency_overrides[get_db] = get_db
+
     return func
+
 
 client = TestClient(app)
 
@@ -33,7 +37,10 @@ def test_version():
 # #     response = client.get("/{todo_id}/")
 # #     assert response.status_code == 200
 
+
 @temp_db
 def test_create_todo():
-    response = client.post("/todos", json={"title": "temp_db_test", "description": "temp_db_test"})
+    response = client.post(
+        "/todos", json={"title": "temp_db_test", "description": "temp_db_test"}
+    )
     assert response.status_code == 200
