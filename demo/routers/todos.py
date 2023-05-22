@@ -1,3 +1,4 @@
+import uuid
 from typing import List
 from uuid import UUID
 
@@ -42,7 +43,7 @@ def get_todo(id: UUID, db: Session = Depends(get_db)):
 
 @router.post("/", response_model=todo_schema.Todo)
 def create_todo(todo_body: todo_schema.TodoCreate, db: Session = Depends(get_db)):
-    return todo_crud.create_todo(db, todo_body)
+    return todo_crud.create_todo("todos", str(uuid.uuid4()), db, todo_body)
 
 
 @router.put("/{id}", response_model=todo_schema.Todo)

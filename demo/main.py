@@ -1,6 +1,9 @@
 from fastapi import FastAPI
 
-from demo.routers import authentication, todos, user, done
+from demo.routers import authentication, done, todos, user
+from log.log import read_logger
+
+read_logger()
 
 app = FastAPI()
 

@@ -28,6 +28,8 @@ python-jose = {extras = ["cryptography"], version = "^3.3.0"}
 passlib = {extras = ["bcrypt"], version = "^1.7.4"}
 bcrypt = "^4.0.1"
 httpx = "^0.24.1"
+PyYAML = "^6.0"
+requests = "^2.30.0"
 
 [tool.poetry.dev-dependencies]
 black = "^23.3.0"
